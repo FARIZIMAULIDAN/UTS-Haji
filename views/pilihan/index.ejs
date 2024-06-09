@@ -1,0 +1,34 @@
+<%- include('../partials/_head.ejs') %>
+<%- include('../partials/_navbar.ejs') %>
+<%- include('../partials/_messages.ejs') %>
+<div class="container">
+    <%- include('../partials/_messages.ejs') %>
+    <div class="row">
+        <div class="col">
+            <a href="/pilihan/create" class="btn btn-sm btn-success">tambah</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nama Pilihan</th>
+                            <th colspan="2" scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i = 0; i < data.length; i++){ %>
+                            <tr>
+                                <th scope="row"><%= (i+1)%></th>
+                                <td><%= data[i].nama_pilihan %></td>
+                                <td>
+                                    <a href="/pilihan/edit/<%= data[i].id_pilihan %>" class="btn btn-sm btn-warning">edit</a>
+                                    <a href="/pilihan/delete/<%= data[i].id_pilihan %>" class="btn btn-sm btn-danger">delete</a>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+    <%- include('../partials/_foot.ejs') %>

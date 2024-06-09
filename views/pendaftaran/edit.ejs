@@ -1,0 +1,44 @@
+<%- include('../partials/_head.ejs') %>
+<%- include('../partials/_navbar.ejs') %>
+
+<div class="container">
+    <form action="/pendaftaran/update/<%= data.id_pendaftaran %>" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="nama" class="form-label">Foto KK</label>
+            <input type="file" class="form-control" name="foto">
+        </div>
+        <div class="mb-3">
+            <label for="nama" class="form-label">Nama Jamaah</label>
+            <input type="text" class="form-control" name="nama_jamaah" value="<%= data.nama_jamaah %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="nama" class="form-label">NIK</label>
+            <input type="text" class="form-control" name="nik" value="<%= data.nik %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="nama" class="form-label">Alamat</label>
+            <input type="text" class="form-control" name="alamat" value="<%= data.alamat %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="nama" class="form-label">Pilihan</label>
+            <select class="form-select" aria-label="Pilih Tingkat Keahlian" name="id_pilihan" required>
+                <% for(var i=0; i < data_pilihan.length; i++){ %>
+                    <option value="<%= data_pilihan[i].id_pilihan %>" <%= (data.id_pilihan == data_pilihan[i].id_pilihan) ? 'selected' : '' %>><%= data_pilihan[i].nama_pilihan %></option>
+                <% } %>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="nama" class="form-label">Paspor</label>
+            <select class="form-select" aria-label="Pilih Paspor" name="paspor" required>
+                <option value="Ada" <%= (data.paspor == 'Ada') ? 'selected' : '' %>>ADA</option>
+                <option value="Tidak Ada" <%= (data.paspor == 'Tidak Ada') ? 'selected' : '' %>>TIDAK ADA</option>
+                <!-- Tambahkan opsi lain sesuai dengan nilai-nilai enum -->
+            </select>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-sm btn-primary">Simpan Perubahan</button>
+        </div>
+    </form>
+</div>
+
+<%- include('../partials/_foot.ejs') %>

@@ -1,0 +1,42 @@
+<%- include('../partials/_head.ejs') %>
+<%- include('../partials/_navbar.ejs') %>
+<div class="container">
+    <%- include('../partials/_messages.ejs') %>
+    <div class="row">
+        <div class="col">
+            <a href="/pendaftaran/create" class="btn btn-sm btn-success">tambah</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col"></th>
+                        <th scope="col">Nama Jamaah</th>
+                        <th scope="col">NIK</th>
+                        <th scope="col">Alamat</th>
+                        <th scope="col">Pilihan</th>
+                        <th scope="col">Paspor</th>
+                        <th colspan="2" scope="col">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i = 0; i < data.length; i++){ %>
+                        <tr>
+                            <th scope="row"><%= (i+1)%></th>
+                            <td><img src="/images/upload/<%= data[i].foto %>" height="100"></td>
+                            <td><%= data[i].nama_jamaah %></td>
+                            <td><%= data[i].nik %></td>
+                            <td><%= data[i].alamat %></td>
+                            <td><%= data[i].nama_pilihan %></td>
+                            <td><%= data[i].paspor %></td>
+                            <td>
+                                <a href="/pendaftaran/edit/<%= data[i].id_pendaftaran %>" class="btn btn-sm btn-warning">edit</a>
+                                <a href="/pendaftaran/delete/<%= data[i].id_pendaftaran %>" class="btn btn-sm btn-danger">delete</a>
+                            </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    <%- include('../partials/_foot.ejs') %>

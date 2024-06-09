@@ -1,0 +1,14 @@
+<%- include('../partials/_head.ejs') %>
+<%- include('../partials/_navbar.ejs') %>
+    <div class="container">
+        <form action="/pilihan/update/<%= id %>" method="POST">
+            <div class="mb-3">
+                <label for="nama" class="form-label">Nama Pilihan</label>
+                <input type="text" class="form-control" name="nama_pilihan" value="<%= nama_pilihan %>" required>
+            </div>
+        <div class="">
+            <button type="submit" class="btn btn-sm btn-success">simpan</button>
+        </div>
+    </form>
+</div>
+<%- include('../partials/_foot.ejs') %>
